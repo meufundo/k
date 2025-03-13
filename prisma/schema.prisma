@@ -1,0 +1,94 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id           String   @id @default(uuid())
+  phone        String   @unique
+  password     String
+  code         String   @unique
+  inviter      User?    @relation("UserInviter", fields: [inviterCode], references: [code])
+  inviterCode  String?  @map("inviter_code")
+  invitedUsers User[]   @relation("UserInviter")
+  account      Account?
+  role         Role     @default(USER)
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("users")
+}
+
+model Account {
+  id           String        @id @default(uuid())
+  user         User          @relation(fields: [userId], references: [id])
+  userId       String        @unique @map("user_id")
+  balance      Decimal
+  vips         AccountVip[]
+  transactions Transaction[]
+  createdAt    DateTime      @default(now()) @map("created_at")
+
+  @@map("accounts")
+}
+
+model AccountVip {
+  id        String   @id @default(uuid())
+  account   Account  @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  accountId String   @map("account_id")
+  vip       VIP      @relation(fields: [vipId], references: [id], onDelete: Cascade)
+  vipId     String   @map("vip_id")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("accounts_vips")
+}
+
+model VIP {
+  id         String       @id @default(uuid())
+  name       String       @unique
+  price      Decimal
+  dailyGain  Decimal
+  AccountVip AccountVip[]
+  createdAt  DateTime     @default(now()) @map("created_at")
+
+  @@map("vips")
+}
+
+enum TransactionType {
+  BONUS
+  INVEST
+  DEPOSIT
+  WITHDRAWAL
+}
+
+enum TransactionStatus {
+  PENDING
+  SUCCESS
+  FAILED
+}
+
+model Transaction {
+  id        String            @id @default(uuid())
+  account   Account           @relation(fields: [accountId], references: [id])
+  accountId String            @map("account_id")
+  amount    Decimal
+  type      TransactionType
+  status    TransactionStatus @default(PENDING)
+  createdAt DateTime          @default(now()) @map("created_at")
+
+  @@map("transactions")
+}
