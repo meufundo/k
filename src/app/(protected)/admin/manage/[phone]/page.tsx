@@ -22,10 +22,9 @@ export default async function Page({
     },
   });
 
-  /* @ts-except-error rrrr */
   const pendingWithdrawls = user!.account!.transactions.filter(
-    /* @ts-except-error rrrr */
-    (t) => t.type == "WITHDRAWAL" && t.status == "PENDING",
+    (t: { type: string; status: string }) =>
+      t.type == "WITHDRAWAL" && t.status == "PENDING",
   );
 
   return (
