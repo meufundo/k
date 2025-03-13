@@ -59,7 +59,7 @@ export default async function Page({
       <div className="py-2 px-4 shadow mt-4">
         <h2 className="font-bold">Pending withdrawls</h2>
         {pendingWithdrawls.length > 0 ? (
-          pendingWithdrawls.map((t) => (
+          pendingWithdrawls.map((t: { id: string; amount: number }) => (
             <h1 key={t.id}>Withdrawl: {t.amount.toString()}.00 MZN</h1>
           ))
         ) : (
