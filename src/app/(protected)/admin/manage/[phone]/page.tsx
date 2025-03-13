@@ -46,7 +46,11 @@ export default async function Page({
       <div className="py-2 px-4 shadow mt-4">
         <h2 className="font-bold">VIPS</h2>
         {user!.account!.vips.length > 0 ? (
-          user?.account?.vips.map((v) => <h1 key={v.id}>{v.vip.name}</h1>)
+          user?.account?.vips.map(
+            (v: { id: string; vip: { name: string } }) => (
+              <h1 key={v.id}>{v.vip.name}</h1>
+            ),
+          )
         ) : (
           <h2>Inactivo</h2>
         )}
