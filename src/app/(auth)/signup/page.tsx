@@ -108,13 +108,15 @@ export default function SignupPage() {
         </h3>
       </div>
       <div className="p-2 py-8 shadow-lg bg-white rounded relative mt-[15vh]">
-        <Image
-          alt=""
-          width={85}
-          height={85}
-          className="rounded-full absolute left-1/2 -translate-x-1/2 top-[-48] border-2 border-gray-500"
-          src="https://raw.githubusercontent.com/meufundo/files/refs/heads/main/328740526_562186155960460_7468924947968940764_n.jpg"
-        />
+        <div className="absolute left-1/2 -translate-x-1/2 -top-12">
+          <Image
+            alt=""
+            width={85}
+            height={85}
+            className="border-2 border-gray-500  rounded-full "
+            src="https://raw.githubusercontent.com/meufundo/files/refs/heads/main/328740526_562186155960460_7468924947968940764_n.jpg"
+          />
+        </div>
 
         <Form {...form}>
           {signupError && (
