@@ -8,9 +8,12 @@ import { useSession } from "next-auth/react";
 export default function HomePage() {
   const session = useSession();
 
-  function handleShareLink() {
+  async function handleShareLink() {
+    await navigator.clipboard.writeText(
+      `https://kampar.vercel.pp/signup?code=${session.data?.user?.code}`,
+    );
     navigator.share({
-      url: `https://2025.kampar.vercel.pp/signup?code=${session.data?.user?.code}`,
+      url: `https://kampar.vercel.pp/signup?code=${session.data?.user?.code}`,
     });
   }
 
@@ -48,7 +51,7 @@ export default function HomePage() {
           onClick={handleShareLink}
         >
           <ExternalLink />
-          Invita...
+          Invita
         </button>
       </div>
 
