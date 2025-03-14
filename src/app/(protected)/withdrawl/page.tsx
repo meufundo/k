@@ -60,7 +60,7 @@ export default function WithdrawlPage() {
   }
 
   return (
-    <div className="pt-[10vh] px-2 text-lg text-white font-bold">
+    <div className="pt-[10vh] min-h-screen bg-[#6260db] px-2 text-lg text-white font-bold">
       <div className="shadow-2xl bg-[#d7bf69] rounded p-2 py-8">
         <h2 className="text-center text-2xl font-bold">Retirar</h2>
         <div className="flex items-center justify-between gap-4 shadow py-2 px-4 mt-12 rounded">
@@ -101,12 +101,10 @@ export default function WithdrawlPage() {
           <AlertDialogHeader>
             <AlertDialogTitle>Levantamento</AlertDialogTitle>
             <AlertDialogDescription>
-              <p>O seu pedido de levantamento foi efectuado com êxito.</p>
-              <p>
-                O valor levantado será depositado no número{" "}
-                <span className="font-bold">{session.data?.user?.phone}</span>{" "}
-                em breve.
-              </p>
+              O seu pedido de levantamento foi efectuado com êxito.
+              <br />O valor levantado será depositado no número{" "}
+              <span className="font-bold">{session.data?.user?.phone}</span> em
+              breve.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

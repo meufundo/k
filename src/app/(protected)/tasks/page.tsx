@@ -16,7 +16,7 @@ export default function TasksPage() {
         <div className="grid grid-cols-4 gap-2 mt-8 z-10">
           <button className="rounded bg-[#c2c9f7] flex flex-col gap-2 items-center py-2 font-bold text-md text-white">
             <MdOutlineMovie size={36} />
-            <h2>Movies</h2>
+            <h2>Moves</h2>
           </button>
           <button className="rounded bg-[#fb8b83] flex flex-col gap-2 items-center py-2 font-bold text-md text-white">
             <RiVipFill size={36} />
