@@ -12,7 +12,7 @@ export default function HomePage() {
   return (
     <div className={`${monaSans.variable}`}>
       <div className="p-2">
-        <div className="bg-[#d7bf69] text-white mt-4 p-2 rounded relative border-2 border-white">
+        <div className="bg-[#d7bf69] text-white mt-4 p-2 pb-32 rounded relative border-2 border-white">
           <div className="absolute right-2">
             <Settings size={32} />
           </div>
@@ -28,9 +28,9 @@ export default function HomePage() {
             </div>
             <div className="">
               <div className="flex items-center gap-2">
-                <h2 className="text-xl font-bold mt-2">****78865</h2>
+                <h2 className="text-xl font-bold mt-2">8********</h2>
                 <h2 className="font-bold italic mt-2 [text-shadow:2px_2px_2px_rgb(59,130,246)]">
-                  VIP&middot;2
+                  VIP&middot;0
                 </h2>
               </div>
               <h2 className="font-bold text-[14px]">
@@ -66,30 +66,20 @@ export default function HomePage() {
         <div className="mt-8 p-4 border-[12px] border-green-600 bg-[#351793] rounded">
           <div className="grid grid-cols-3 grid-rows-3">
             {Array.from([
-              { name: "comulativas", value: 29737.34 },
-              { name: "Equilibrio", value: 287.0 },
+              { name: "comulativas", value: 0.0 },
+              { name: "Equilibrio", value: 0.0 },
               { name: "Fundo", value: 0.0 },
               //
-              { name: "Tarefa coletavel", value: 10 },
-              { name: "Coletavel", value: 0 },
-              { name: "Hoje", value: 174.06 },
+              { name: "Tarefa coletavel", value: 0.0 },
+              { name: "Coletavel", value: 0.0 },
+              { name: "Hoje", value: 0.0 },
               //
-              { name: "Ontem", value: 620 },
-              { name: "Semana", value: 792.39 },
-              { name: "mes", value: 15674.06 },
+              { name: "Ontem", value: 0.0 },
+              { name: "Semana", value: 0.0 },
+              { name: "mes", value: 0.0 },
             ]).map((x) => (
               <Box key={Math.random()} name={x.name} value={x.value} />
             ))}
-          </div>
-        </div>
-
-        <div className="mt-8 py-4 px-2 bg-[#341fa8] rounded-xl text-white">
-          <div className="flex items-center justify-between">
-            <div>
-              <div>icon</div>
-              <div>Renda&Respesas</div>
-            </div>
-            <div>{">"}</div>
           </div>
         </div>
       </div>
