@@ -1,5 +1,5 @@
 import { saltAndHashPassword } from "@/lib/utils";
-import NextAuth, { User } from "next-auth";
+import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { prisma } from "./prisma.config";
 import { z } from "zod";
@@ -58,11 +58,20 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
 
     async session({ session, token }) {
-      if (!token.user) {
+      const user = await prisma.user.findFirst({
+        /* @ts-expect-error xxxx */
+        where: { phone: token.user.phone ?? session.user.phone },
+        include: { account: true },
+      });
+      if (!user) {
+        /* @ts-expect-error xxxx */
+        session.user = token.user;
         return session;
       }
-      /* @ts-expect-error: we dont care about 'isEmailVeried' field */
-      session.user = token.user as unknown as User;
+      session.user.role = user.role;
+      session.user.phone = user.phone;
+      session.user.code = user.code;
+      session.user.balance = user.account?.balance.toNumber() ?? 0;
       return session;
     },
   },

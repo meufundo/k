@@ -8,9 +8,8 @@ const formValidationSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
-  const { data, success } = formValidationSchema.safeParse(
-    await request.json(),
-  );
+  const body = await request.json();
+  const { data, success } = formValidationSchema.safeParse(body);
   if (false === success) {
     return NextResponse.json(
       { message: "As informações inseridas são inválidas." },
@@ -39,34 +38,26 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  if (amount > user!.account!.balance.toNumber()) {
+    return NextResponse.json(
+      {
+        message: "Saldo insuficiente",
+      },
+      { status: 400 },
+    );
+  }
+
   await prisma.account.update({
     where: { userId: user.id },
-    data: { balance: { increment: amount } },
+    data: { balance: { decrement: amount } },
   });
   await prisma.transaction.create({
     data: {
       amount,
-      type: "DEPOSIT",
-      status: "SUCCESS",
+      type: "WITHDRAWAL",
       accountId: user.account!.id,
     },
   });
-
-  if (user.inviter) {
-    const comission = 0.15 * amount;
-    await prisma.account.update({
-      where: { userId: user.inviter.id },
-      data: { balance: { increment: comission } },
-    });
-    await prisma.transaction.create({
-      data: {
-        amount: comission,
-        type: "BONUS",
-        status: "SUCCESS",
-        accountId: user.inviter.account!.id,
-      },
-    });
-  }
 
   return NextResponse.json(
     { message: "Transação criada com sucesso." },
