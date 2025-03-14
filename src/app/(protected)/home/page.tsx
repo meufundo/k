@@ -12,9 +12,11 @@ export default function HomePage() {
     await navigator.clipboard.writeText(
       `https://kampar.vercel.pp/signup?code=${session.data?.user?.code}`,
     );
-    navigator.share({
-      url: `https://kampar.vercel.pp/signup?code=${session.data?.user?.code}`,
-    });
+    if (navigator.share) {
+      navigator.share({
+        url: `https://kampar.vercel.pp/signup?code=${session.data?.user?.code}`,
+      });
+    }
   }
 
   return (
@@ -33,7 +35,10 @@ export default function HomePage() {
           </p>
         </div>
         <p>esta é a sua maneira de ganhar dinheiro rapidamente.</p>
-        <button className="py-2 px-4 text-white bg-blue-900 mt-4 text-xs rounded-2xl">
+        <button
+          onClick={handleShareLink}
+          className="py-2 px-4 text-white bg-blue-900 mt-4 text-xs rounded-2xl"
+        >
           Convidar amigos para ganhar dinheiro juntos
         </button>
       </div>
