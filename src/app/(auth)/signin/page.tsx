@@ -67,7 +67,7 @@ export default function SigninPage() {
         <h3 className="text-lg text-center font-bold">Entrar na conta</h3>
       </div>
       <div className="p-2 py-8 shadow-lg bg-white rounded relative mt-[15vh]">
-        <div className="absolute left-1/2 -translate-x-1/2 top-[-48]">
+        <div className="absolute left-1/2 -translate-x-1/2 -top-48">
           <Image
             alt=""
             width={85}
