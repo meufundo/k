@@ -10,13 +10,11 @@ export default function WithdrawlPage() {
             <h2 className="text-xl font-bold">Contas officiais</h2>
             <div className="flex items-center justify-between rounded mt-4">
               <h2>Mpesa</h2>
-              <h2>87487687</h2>
-              <h2>Carlos Mauro</h2>
+              <h2>848860677</h2>
             </div>
             <div className="flex items-center justify-between rounded mt-2">
               <h2>Emola</h2>
-              <h2>87487687</h2>
-              <h2>Carlos Mauro</h2>
+              <h2>860870340</h2>
             </div>
           </div>
           <h2 className="mt-8 text-sm">
