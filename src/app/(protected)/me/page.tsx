@@ -10,9 +10,9 @@ const monaSans = Mona_Sans({
 
 export default function HomePage() {
   return (
-    <div className={`${monaSans.variable}`}>
+    <div className={`${monaSans.variable} bg-[#6260db] min-h-screen pb-32`}>
       <div className="p-2">
-        <div className="bg-[#d7bf69] text-white mt-4 p-2 pb-32 rounded relative border-2 border-white">
+        <div className="bg-[#d7bf69] text-white mt-4 p-2 rounded relative border-2 border-white">
           <div className="absolute right-2">
             <Settings size={32} />
           </div>
