@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 
 interface VIP {
   name: string;
@@ -8,13 +7,14 @@ interface VIP {
 }
 
 const vips: VIP[] = [
-  { name: "VIP1", price: 500, dailyGain: 120 },
-  { name: "VIP2", price: 1000, dailyGain: 240 },
-  { name: "VIP3", price: 5000, dailyGain: 480 },
-  { name: "VIP4", price: 10000, dailyGain: 750 },
-  { name: "VIP5", price: 20000, dailyGain: 1500 },
-  { name: "VIP6", price: 50000, dailyGain: 3500 },
+  { name: "VIP+", price: 500, dailyGain: 35 },
+  { name: "VIP1", price: 1000, dailyGain: 60 },
+  { name: "VIP2", price: 5000, dailyGain: 15 * 14 },
+  { name: "VIP3", price: 10000, dailyGain: 20 * 24 },
+  { name: "VIP4", price: 30000, dailyGain: 25 * 48 },
+  { name: "VIP5", price: 60000, dailyGain: 30 * 93 },
 ];
+export { vips };
 
 export default function VipsPage() {
   return (
@@ -32,9 +32,9 @@ export default function VipsPage() {
   );
 }
 
-function VipCard({ vip }: { vip: VIP }) {
+export function VipCard({ vip }: { vip: VIP }) {
   return (
-    <div className="shadow p-4 rounded  bg-[#d7bf69]">
+    <div className="shadow p-4 py-2 rounded  bg-[#d7bf69]">
       <div className="flex items-center justify-between">
         <div className="flex-auto">
           <Image
@@ -50,12 +50,8 @@ function VipCard({ vip }: { vip: VIP }) {
           <p>Preço: {vip.price} MZN</p>
           <p>Renda diária: {vip.dailyGain}.00 MZN</p>
           <p>Renda mensal: {vip.dailyGain * 30}.00 MZN</p>
+          <p>Renda anual: {vip.dailyGain * 30 * 12}.00 MZN</p>
         </div>
-      </div>
-      <div className="w-full mt-4">
-        <Button className="w-full bg-[#1a657a] rounded text-white py-2">
-          Investir
-        </Button>
       </div>
     </div>
   );

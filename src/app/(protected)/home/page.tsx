@@ -61,6 +61,10 @@ export default function HomePage() {
       </div>
 
       <div className="bg-white p-2 py-4 mt-12 rounded-xl">
+        <Vips />
+      </div>
+
+      <div className="bg-white p-2 py-4 mt-12 rounded-xl">
         <div className="border-b-2 mt-1">
           <h2 className="font-bold text-blue-800">tarefas recomendadas</h2>
         </div>
@@ -122,6 +126,7 @@ function Tasks() {
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Alert, AlertTitle } from "@/components/ui/alert";
+import { VipCard, vips } from "../vips/page";
 
 function Task({
   image,
@@ -157,7 +162,7 @@ function Task({
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="flex items-center justify-between pr-2 shadow rounded-full shadow-ring text-sm">
+      <div className="flex items-center justify-between pr-2 shadow rounded-full text-sm">
         <div className="flex gap-2 items-center">
           <Image
             src={image}
@@ -186,5 +191,20 @@ function Task({
         </div>
       </div>
     </div>
+  );
+}
+
+export function Vips() {
+  return (
+    <>
+      <h2 className="font-bold mb-4">Vips</h2>
+      <div className="space-y-4">
+        <div className="space-y-2">
+          {vips.map((vip) => (
+            <VipCard key={vip.name} vip={vip} />
+          ))}
+        </div>
+      </div>
+    </>
   );
 }

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Vips } from "../home/page";
 
 export default function WithdrawlPage() {
   return (
@@ -21,6 +22,9 @@ export default function WithdrawlPage() {
             NB: Todos os depósitos devem ser efectuados nas contas officiais e
             com o número usado para criar a conta.
           </h2>
+        </div>
+        <div className="bg-white text-black mt-8 p-2">
+          <Vips />
         </div>
       </div>
     </>
