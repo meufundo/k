@@ -38,6 +38,9 @@ export default function TasksPage() {
           <h1 className="font-bold text-xl">Tarefa</h1>
         </div>
         <div className="grid grid-cols-2 gap-4 mt-4 font-bold">
+          <Link href="/tasks/v0">
+            <Vip0 />
+          </Link>
           <Link href="/tasks/v+">
             <VipPlus />
           </Link>
@@ -58,6 +61,15 @@ export default function TasksPage() {
           </Link>
         </div>
       </div>
+    </div>
+  );
+}
+function Vip0() {
+  return (
+    <div className="bg-[#d3dee4] text-white p-2 pr-8 text-sm">
+      <h2 className="italic font-bold">VIP &middot; 0</h2>
+      <p>Número de tarefas disponíveis:</p>
+      <p>{2}</p>
     </div>
   );
 }
