@@ -7,6 +7,7 @@ interface VIP {
 }
 
 const vips: VIP[] = [
+  { name: "VIP0", price: 100, dailyGain: 8 },
   { name: "VIP+", price: 500, dailyGain: 35 },
   { name: "VIP1", price: 1000, dailyGain: 60 },
   { name: "VIP2", price: 5000, dailyGain: 15 * 14 },
@@ -35,7 +36,7 @@ export default function VipsPage() {
 export function VipCard({ vip }: { vip: VIP }) {
   return (
     <div className="shadow p-4 py-2 rounded  bg-[#d7bf69]">
-      <div className="flex items-center gap-4">
+      <div className="flex gap-4">
         <div>
           <Image
             alt=""
