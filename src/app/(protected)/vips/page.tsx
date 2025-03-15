@@ -35,8 +35,8 @@ export default function VipsPage() {
 export function VipCard({ vip }: { vip: VIP }) {
   return (
     <div className="shadow p-4 py-2 rounded  bg-[#d7bf69]">
-      <div className="flex items-center justify-between">
-        <div className="flex-auto">
+      <div className="flex items-center gap-4">
+        <div>
           <Image
             alt=""
             width={85}
@@ -45,8 +45,8 @@ export function VipCard({ vip }: { vip: VIP }) {
             src="https://raw.githubusercontent.com/meufundo/files/refs/heads/main/328740526_562186155960460_7468924947968940764_n.jpg"
           />
         </div>
-        <div className="flex-auto">
-          <h2 className="text-lg font-bold">{vip.name}</h2>
+        <div>
+          <h2 className="text-md font-bold">{vip.name}</h2>
           <p>Preço: {vip.price} MZN</p>
           <p>Renda diária: {vip.dailyGain}.00 MZN</p>
           <p>Renda mensal: {vip.dailyGain * 30}.00 MZN</p>

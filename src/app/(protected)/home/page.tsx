@@ -4,6 +4,10 @@ import { ExternalLink, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Alert, AlertTitle } from "@/components/ui/alert";
+import { VipCard, vips } from "../vips/page";
 
 export default function HomePage() {
   const session = useSession();
@@ -123,11 +127,6 @@ function Tasks() {
   );
 }
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Alert, AlertTitle } from "@/components/ui/alert";
-import { VipCard, vips } from "../vips/page";
-
 function Task({
   image,
   vipName,
@@ -197,13 +196,11 @@ function Task({
 export function Vips() {
   return (
     <>
-      <h2 className="font-bold mb-4">Vips</h2>
-      <div className="space-y-4">
-        <div className="space-y-2">
-          {vips.map((vip) => (
-            <VipCard key={vip.name} vip={vip} />
-          ))}
-        </div>
+      <h2 className="font-bold">Vips</h2>
+      <div className="space-y-2 mt-4">
+        {vips.map((vip) => (
+          <VipCard key={vip.name} vip={vip} />
+        ))}
       </div>
     </>
   );
